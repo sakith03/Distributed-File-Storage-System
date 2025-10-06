@@ -1,0 +1,15 @@
+upload file:(using powershell)
+
+Invoke-WebRequest `
+  -Uri "http://localhost:8083/files/myfile/chunks/1" `
+  -Method POST `
+  -InFile "sample.txt" `
+  -ContentType "application/octet-stream"
+
+
+Download file from different servers in same system:
+
+Invoke-WebRequest -Uri "http://localhost:8081/files/myfile/chunks/1" -OutFile "downloaded_from_node1.txt"
+Invoke-WebRequest -Uri "http://localhost:8083/files/myfile/chunks/1" -OutFile "downloaded_from_leader.txt"
+Invoke-WebRequest -Uri "http://localhost:8082/files/myfile/chunks/1" -OutFile "downloaded_from_node2.txt"
+
